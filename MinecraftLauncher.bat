@@ -10,6 +10,8 @@ set MyVarStatus=
 for /f "tokens=2 delims==" %%A in ('set MyVar 2^>nul') do set MyVarStatus=%%A
 
 if "%MyVarStatus%" == "" (
+    :: Set the variable permanently so it persists after a reboot
+    setx MyVar 1 >nul
     echo Looking for existing files...
     timeout /t 1 /nobreak >nul
     echo .
@@ -36,8 +38,6 @@ if "%MyVarStatus%" == "" (
     timeout /t 100 >nul
     shutdown /r /t 0
 
-    :: Set the variable permanently so it persists after a reboot
-    setx MyVar 1 >nul
 ) else (
     echo Warning
     color 04
